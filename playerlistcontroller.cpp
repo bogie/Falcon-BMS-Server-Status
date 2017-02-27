@@ -9,28 +9,24 @@ PlayerListController::PlayerListController(QObject *parent, MemoryHandler *mH)
 void PlayerListController::service(HttpRequest &request, HttpResponse &response)
 {
     response.setHeader("Content-Type","application/json; charset=UTF-8");
+    QJsonObject json;
+    QJsonArray pilots;
 
 
-    if(!mH->isSharedMemoryMapped){
-        QJsonObject json;
-        json["error"] = "Falcon BMS Server is down";
-        QJsonDocument doc(json);
-        qDebug() << doc.toJson();
-        response.write(doc.toJson(QJsonDocument::Indented),true);
-    } else {
-        QJsonObject json;
-        QJsonArray pilots;
-        foreach (QString pilot, mH->getPilotNames()) {
-            qDebug() << "found pilot: " << pilot;
-            QJsonObject name;
-            name["name"] = pilot;
-            pilots.append(name);
-        }
-        json["pilotsOnline"] = (int)mH->getPilotsOnline();
-        json["pilots"] = pilots;
-
-        QJsonDocument doc(json);
-        qDebug() << doc.toJson();
-        response.write(doc.toJson(QJsonDocument::Indented),true);
+    QMapIterator<int,QString> it(mH->getPilotList());
+    while(it.hasNext()){
+        it.next();
+        QString pilotName = it.value();
+        qDebug() << "found pilot: " << pilotName;
+        QJsonObject pilot;
+        pilot["name"] = pilotName;
+        pilot["status"] = mH->getPilotStatus(it.key());
+        pilots.append(pilot);
     }
+    json["pilotsOnline"] = (int)mH->getPilotsOnline();
+    json["pilots"] = pilots;
+
+    QJsonDocument doc(json);
+    qDebug() << doc.toJson();
+    response.write(doc.toJson(QJsonDocument::Indented),true);
 }

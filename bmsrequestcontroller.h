@@ -3,6 +3,7 @@
 
 #include "httprequesthandler.h"
 #include "playerlistcontroller.h"
+#include "pilotstatuscontroller.h"
 #include "memoryhandler.h"
 
 using namespace stefanfrings;
@@ -16,6 +17,7 @@ public:
 private:
     MemoryHandler* mH;
     PlayerListController pLController;
+    PilotStatusController pSController;
 };
 
 #endif // BMSREQUESTCONTROLLER_H

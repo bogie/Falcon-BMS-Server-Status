@@ -52,12 +52,45 @@ QStringList MemoryHandler::getPilotNames()
     return list;
 }
 
+QMap<int, QString> MemoryHandler::getPilotList()
+{
+    QMap<int, QString> pilotList;
+    for(int i=0; i<(int)data->pilotsOnline;i++){
+        pilotList.insert(i,data->pilotsCallsign[i]);
+    }
+    return pilotList;
+}
+
+int MemoryHandler::getPilotStatus(QString pilotName)
+{
+    int pilotId = getPilotIdByName(pilotName);
+    if(pilotId<0){
+        return 5;
+    }
+    return (int)data->pilotsStatus[pilotId];
+}
+
+int MemoryHandler::getPilotStatus(int pilotId)
+{
+    return (int)data->pilotsStatus[pilotId];
+}
+
 int MemoryHandler::getCurrentTime()
 {
     return data->currentTime;
 }
 
-bool isBMSRunning(){
+int MemoryHandler::getPilotIdByName(QString pilotName)
+{
+    for(int i=0;i<(int)data->pilotsOnline;i++){
+        if(data->pilotsCallsign[i] == pilotName){
+            return i;
+        }
+    }
+    return -1;
+}
+
+bool MemoryHandler::isBMSRunning(){
     QProcess tasklist;
     tasklist.start("tasklist", QStringList() << "/NH" << "/FO" << "CSV" << "/FI" << QString("IMAGENAME eq Falcon BMS.exe"));
     tasklist.waitForFinished();

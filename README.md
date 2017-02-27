@@ -10,3 +10,8 @@ Running:
 
 
 Using http://stefanfrings.de/qtwebapp/index-en.html for http server(LGPL License)
+
+Currently supported outputs:
+/ or /playerlist - shows the currently playing pilots(will rename to /pilotstatus soon)
+/pilotstatus/<pilotname> - shows the state the pilot is in(compare with FlightData.h)
+/currenttime - shows the current campaign time

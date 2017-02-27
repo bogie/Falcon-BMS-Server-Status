@@ -5,6 +5,7 @@ QT -= gui
 CONFIG += c++11
 
 CONFIG += debug_and_release
+CONFIG += build_all
 
 TARGET = BMS-server-status
 CONFIG += console

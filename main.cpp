@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
-    QSettings* listenerSettings = new QSettings(QCoreApplication::applicationDirPath()+"/etc/webapp1.ini", QSettings::IniFormat, &a);
+    QSettings* listenerSettings = new QSettings(QCoreApplication::applicationDirPath()+"/etc/http.ini", QSettings::IniFormat, &a);
     MemoryHandler *mH = new MemoryHandler();
 
     listenerSettings->beginGroup("listener");

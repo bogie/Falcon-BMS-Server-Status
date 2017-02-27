@@ -16,11 +16,11 @@ void BMSRequestController::service(HttpRequest &request, HttpResponse &response)
         qDebug() << doc.toJson();
         response.write(doc.toJson(QJsonDocument::Indented),true);
     } else {
-        if(path == "/" || path == "/playerlist") {
+        if(path == "/" || QString(path).startsWith("/pilotlist",Qt::CaseInsensitive)) {
             pLController.service(request,response);
-        } else if(QString(path).startsWith("/pilotstatus/")) {
+        } else if(QString(path).startsWith("/pilotstatus/",Qt::CaseInsensitive)) {
             pSController.service(request,response);
-        }else if(QString(path).startsWith("/currenttime")){
+        }else if(QString(path).startsWith("/currenttime",Qt::CaseInsensitive)){
             response.setHeader("Content-Type","application/json; charset=UTF-8");
             QJsonObject json;
             json["currentTime"] = mH->getCurrentTime();

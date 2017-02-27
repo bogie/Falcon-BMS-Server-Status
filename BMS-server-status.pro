@@ -15,15 +15,15 @@ TEMPLATE = app
 SOURCES += main.cpp \
     memoryhandler.cpp \
     bmsrequestcontroller.cpp \
-    playerlistcontroller.cpp \
-    pilotstatuscontroller.cpp
+    pilotstatuscontroller.cpp \
+    pilotlistcontroller.cpp
 
 HEADERS += \
     memoryhandler.h \
     bmsrequestcontroller.h \
-    playerlistcontroller.h \
     pilotstatuscontroller.h \
-    FlightData.h
+    FlightData.h \
+    pilotlistcontroller.h
 
 EXTRAS += doc
 include(3rd/QtWebApp/httpserver/httpserver.pri)

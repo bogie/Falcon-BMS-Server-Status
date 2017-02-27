@@ -1,5 +1,5 @@
-#ifndef PLAYERLISTCONTROLLER_H
-#define PLAYERLISTCONTROLLER_H
+#ifndef PILOTLISTCONTROLLER_H
+#define PILOTLISTCONTROLLER_H
 
 #include <QObject>
 #include <QJsonDocument>
@@ -12,14 +12,14 @@
 
 using namespace stefanfrings;
 
-class PlayerListController : public HttpRequestHandler
+class PilotListController : public HttpRequestHandler
 {
     Q_OBJECT
 public:
-    PlayerListController(QObject* parent=0, MemoryHandler* mH = NULL);
+    PilotListController(QObject* parent=0, MemoryHandler* mH = NULL);
     void service(HttpRequest& request, HttpResponse& response);
 private:
     MemoryHandler* mH;
 };
 
-#endif // PLAYERLISTCONTROLLER_H
+#endif // PILOTISTCONTROLLER_H

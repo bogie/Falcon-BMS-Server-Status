@@ -1,12 +1,12 @@
-#include "playerlistcontroller.h"
+#include "pilotlistcontroller.h"
 
-PlayerListController::PlayerListController(QObject *parent, MemoryHandler *mH)
+PilotListController::PilotListController(QObject *parent, MemoryHandler *mH)
     : HttpRequestHandler(parent), mH(mH)
 {
 
 }
 
-void PlayerListController::service(HttpRequest &request, HttpResponse &response)
+void PilotListController::service(HttpRequest &request, HttpResponse &response)
 {
     response.setHeader("Content-Type","application/json; charset=UTF-8");
     QJsonObject json;

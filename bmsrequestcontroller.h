@@ -2,7 +2,7 @@
 #define BMSREQUESTCONTROLLER_H
 
 #include "httprequesthandler.h"
-#include "playerlistcontroller.h"
+#include "pilotlistcontroller.h"
 #include "pilotstatuscontroller.h"
 #include "memoryhandler.h"
 
@@ -16,7 +16,7 @@ public:
     void service(HttpRequest &request, HttpResponse &response);
 private:
     MemoryHandler* mH;
-    PlayerListController pLController;
+    PilotListController pLController;
     PilotStatusController pSController;
 };
 

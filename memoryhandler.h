@@ -27,10 +27,12 @@ public:
     int getCurrentTime();
     bool isBMSRunning();
 private:
-    HANDLE hMapFileHeader;
-    HANDLE hMapFileData;
-    LPVOID header;
-    FlightData2* data;
+    HANDLE dataFileHeader;
+    HANDLE data2FileHeader;
+    LPVOID dataHeader;
+    LPVOID data2Header;
+    FlightData* data;
+    FlightData2* data2;
     QTimer mapTimer;
 
     int getPilotIdByName(QString pilotName);
